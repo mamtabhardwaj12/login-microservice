@@ -1,0 +1,19 @@
+version: "2"
+services:
+  app:
+    container_name: login-microservice
+    image: mamtabhardwaj12/login-microservice
+    restart: always
+    build: .
+    ports:
+      - "8082:8082"
+    links:
+      - mongo
+  mongo:
+    container_name: login-mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+
